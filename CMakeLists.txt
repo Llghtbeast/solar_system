@@ -11,6 +11,9 @@ find_package(GLEW REQUIRED)
 
 add_executable(solar_system
     src/main.cpp
+    src/mesh.cpp
+    src/shader.cpp
+    src/window.cpp
 )
 
 target_include_directories(solar_system PRIVATE
