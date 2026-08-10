@@ -17,6 +17,12 @@ public:
     void swapBuffers() const;
     void processInput();
 
+    int getWidth() const { return m_width; }
+    int getHeight() const { return m_height; }
+    float getAspectRatio() const { 
+        return m_height > 0 ? static_cast<float>(m_width) / static_cast<float>(m_height) : 1.0f; 
+    }
+
     float getDeltaTime();
 
 private:

@@ -14,6 +14,8 @@ add_executable(solar_system
     src/mesh.cpp
     src/shader.cpp
     src/window.cpp
+    src/celestialBody.cpp
+    src/system.cpp
 )
 
 target_include_directories(solar_system PRIVATE

@@ -1,15 +1,17 @@
 #include "window.hpp"
 #include "shader.hpp"
-#include "mesh.hpp"
-#include <vector>
+#include "system.hpp"
 
 /* Vertex shader source code */
 const char* vertexShaderSource = R"glsl(
 #version 330 core
 layout(location=0) in vec3 aPos;
 
+uniform mat4 u_Model;
+uniform mat4 u_Projection;
+
 void main() {
-    gl_Position = vec4(aPos, 1.0);
+    gl_Position = u_Projection * u_Model * vec4(aPos, 1.0);
 }
 )glsl";
 
@@ -24,19 +26,12 @@ void main()
 } 
 )glsl";
 
+
 int main(void) {
-    Window window("Solar System Simulation", 800, 600);
+    Window window("Solar System Simulation", 800, 800);
     Shader shader(vertexShaderSource, fragmentShaderSource);
 
-    std::vector<float> vertices = {
-        -0.5f, -0.5f, 0.0f,
-        0.0f, -0.5f, 0.0f,
-        0.25f, 0.0f, 0.0f,
-        0.0f, 0.0f, 0.0f,
-        0.0f, 0.5f, 0.0f,
-        0.5f, 0.25f, 0.0f
-    };
-    Mesh mesh(vertices);
+    SolarSystem solarSystem;
 
     while (!window.shouldClose())
     {
@@ -46,7 +41,9 @@ int main(void) {
         glClear(GL_COLOR_BUFFER_BIT);
 
         shader.bind();
-        mesh.draw();
+
+        solarSystem.update(static_cast<float>(glfwGetTime()));
+        solarSystem.draw(&window, &shader);        
 
         window.swapBuffers();
         window.pollEvents();

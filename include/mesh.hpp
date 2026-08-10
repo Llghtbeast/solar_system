@@ -8,7 +8,7 @@ public:
     Mesh(const std::vector<float>& vertices);
     ~Mesh();
 
-    void draw() const;
+    void draw(GLenum drawMode = GL_TRIANGLE_FAN) const;
 
 private:
     GLuint m_vao = 0;

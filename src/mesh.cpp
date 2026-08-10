@@ -22,8 +22,10 @@ Mesh::~Mesh() {
     glDeleteBuffers(1, &m_vbo);
 }
 
-void Mesh::draw() const {
+void Mesh::draw(GLenum drawMode) const {
+    if (m_vertexCount == 0) return;
+
     glBindVertexArray(m_vao);
-    glDrawArrays(GL_TRIANGLES, 0, m_vertexCount);
+    glDrawArrays(drawMode, 0, m_vertexCount);
     glBindVertexArray(0);
 }

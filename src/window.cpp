@@ -30,6 +30,8 @@ Window::Window(const std::string& title, int width, int height)
     }
 
     glViewport(0, 0, width, height);
+
+    glfwSetWindowUserPointer(m_window, this);
     glfwSetFramebufferSizeCallback(m_window, framebufferSizeCallback);
 }
 
@@ -67,4 +69,11 @@ float Window::getDeltaTime() {
 
 void Window::framebufferSizeCallback(GLFWwindow* window, int width, int height) {
     glViewport(0, 0, width, height);
+
+    Window* win = static_cast<Window*>(glfwGetWindowUserPointer(window));
+    if (win)
+    {
+        win->m_width = width;
+        win->m_height = height;
+    }
 }
