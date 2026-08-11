@@ -20,15 +20,17 @@ const char *fragmentShaderSource = R"glsl(
 #version 330 core
 out vec4 FragColor;
 
+uniform vec3 u_Color;
+
 void main()
 {
-    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
+    FragColor = vec4(u_Color, 1.0f);
 } 
 )glsl";
 
 
 int main(void) {
-    Window window("Solar System Simulation", 800, 800);
+    Window window("Solar System Simulation", 1200, 1200);
     Shader shader(vertexShaderSource, fragmentShaderSource);
 
     SolarSystem solarSystem;
@@ -37,12 +39,13 @@ int main(void) {
     {
         window.processInput();
 
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glm::vec3 background = hexToColor(COLOR_BLACK);
+        glClearColor(background.x, background.y, background.z, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         shader.bind();
 
-        solarSystem.update(static_cast<float>(glfwGetTime()));
+        solarSystem.update(window.getDeltaTime());
         solarSystem.draw(&window, &shader);        
 
         window.swapBuffers();

@@ -1,13 +1,24 @@
 #include "celestialBody.hpp"
 #include <glm/gtc/matrix_transform.hpp>
 
-CelestialBody::CelestialBody(Mesh& mesh, const glm::vec3& pos, float r)
-    : m_mesh(&mesh), m_position(pos), m_radius(r)
+CelestialBody::CelestialBody(std::string &name, Mesh &mesh, glm::vec3 &color, const glm::vec3 &pos, const glm::vec3 &velocity, float mass, float radius)
+    : m_name(name), m_mesh(&mesh), m_color(color), m_position(pos), m_velocity(velocity), m_acceleration(0.0f), m_mass(mass), m_radius(radius)
 {}
 
-void CelestialBody::updatePosition(const glm::vec3 position)
+void CelestialBody::addForce(const glm::vec3 &force)
 {
-    m_position = position;
+    if (m_mass > 0.0f)
+        m_acceleration += force/m_mass;
+}
+
+void CelestialBody::update(float dt)
+{
+    // Symplectic Euler method
+    m_velocity += m_acceleration * dt;
+    m_position += m_velocity * dt;
+
+    // Reset acceleration for next loop
+    m_acceleration = glm::vec3(0.0f);
 }
 
 glm::mat4 CelestialBody::getModelMatrix() const
