@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="Inner Solar System">
+    <body name="Sun" mass="1.0" radius="0.1" color="0xEF8E38">
+        <position x="0.0" y="0.0" z="0.0"/>
+        <velocity x="0.0" y="0.0" z="0.0"/>
+    </body>
+
+    <body name="Earth" mass="0.00001" radius="0.02" color="0x287AB8" auto_orbit="false">
+        <position x="0.6" y="0.0" z="0.0"/>
+        <velocity x="0.0" y="1.0" z="0.0"/>
+    </body>
+
+    <body name="Mars" mass="0.00001" radius="0.02" color="0xD1492B">
+        <position x="0.0" y="0.6" z="0.0"/>
+        <velocity x="1.0" y="0.0" z="0.0"/>
+    </body>
+</system>

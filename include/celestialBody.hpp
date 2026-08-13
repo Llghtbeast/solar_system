@@ -3,6 +3,7 @@
 #include "mesh.hpp"
 #include "shader.hpp"
 #include <glm/glm.hpp>
+#include "tinyformat.h"
 
 class CelestialBody {
 public:
@@ -21,6 +22,8 @@ public:
 
     glm::mat4 getModelMatrix() const;
     void draw(Shader* shader) const;
+
+    const std::string toString() const;
 
 private:
     std::string m_name;

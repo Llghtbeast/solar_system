@@ -37,3 +37,13 @@ void CelestialBody::draw(Shader* shader) const
         m_mesh->draw(GL_TRIANGLE_FAN);
     }
 }
+
+const std::string CelestialBody::toString() const
+{
+    return tfm::format(
+        "CelestialBody{name: %s, mass: %f, position: [%f, %f, %f], velocity: [%f, %f, %f]}",
+        m_name.c_str(), m_mass, 
+        m_position.x, m_position.y, m_position.z,
+        m_velocity.x, m_velocity.y, m_velocity.z
+    );
+}

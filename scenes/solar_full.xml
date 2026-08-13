@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="Solar System">
+    <!-- Central Star -->
+    <body name="Sun" mass="1000.0" radius="0.08" color="0xFDB813">
+        <position x="0.0" y="0.0" z="0.0"/>
+        <velocity x="0.0" y="0.0" z="0.0"/>
+    </body>
+
+    <!-- Terrestrial Planets -->
+    <body name="Mercury" mass="0.00017" radius="0.012" color="0xA6A6A6" auto_orbit="true" orbit_center="Sun">
+        <position x="0.10" y="0.0" z="0.0"/>
+    </body>
+
+    <body name="Venus" mass="0.0024" radius="0.018" color="0xE3BB76" auto_orbit="true" orbit_center="Sun">
+        <position x="0.15" y="0.0" z="0.0"/>
+    </body>
+
+    <body name="Earth" mass="0.0030" radius="0.020" color="0x287AB8" auto_orbit="true" orbit_center="Sun">
+        <position x="0.22" y="0.0" z="0.0"/>
+    </body>
+
+    <body name="Mars" mass="0.00032" radius="0.015" color="0xD1492B" auto_orbit="true" orbit_center="Sun">
+        <position x="0.30" y="0.0" z="0.0"/>
+    </body>
+
+    <!-- Earth's Moon -->
+    <body name="Moon" mass="0.000037" radius="0.006" color="0xD0D0D0" auto_orbit="true" orbit_center="Earth">
+        <position x="0.235" y="0.0" z="0.0"/>
+    </body>
+
+    <!-- Gas & Ice Giants -->
+    <body name="Jupiter" mass="0.95" radius="0.045" color="0xB07F35" auto_orbit="true" orbit_center="Sun">
+        <position x="0.45" y="0.0" z="0.0"/>
+    </body>
+
+    <body name="Saturn" mass="0.28" radius="0.038" color="0xE2BF7D" auto_orbit="true" orbit_center="Sun">
+        <position x="0.62" y="0.0" z="0.0"/>
+    </body>
+
+    <body name="Uranus" mass="0.043" radius="0.028" color="0x4B70DD" auto_orbit="true" orbit_center="Sun">
+        <position x="0.78" y="0.0" z="0.0"/>
+    </body>
+
+    <body name="Neptune" mass="0.051" radius="0.027" color="0x274687" auto_orbit="true" orbit_center="Sun">
+        <position x="0.95" y="0.0" z="0.0"/>
+    </body>
+</system>

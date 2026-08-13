@@ -29,23 +29,28 @@ void main()
 )glsl";
 
 
-int main(void) {
+int main(int argc, char* argv[]) {
     Window window("Solar System Simulation", 1200, 1200);
     Shader shader(vertexShaderSource, fragmentShaderSource);
 
-    SolarSystem solarSystem;
+    std::string sceneFile = "scenes/solar.xml";
+    if (argc > 1)
+        sceneFile = argv[1];
+
+    SolarSystem solarSystem(sceneFile);
+    std::cout << "Scene \"" << sceneFile << "\" loaded successfully.\n";
+    std::cout << solarSystem.toString();
 
     while (!window.shouldClose())
     {
         window.processInput();
 
-        glm::vec3 background = hexToColor(COLOR_BLACK);
-        glClearColor(background.x, background.y, background.z, 1.0f);
+        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         shader.bind();
 
-        solarSystem.update(window.getDeltaTime());
+        solarSystem.update(0.001 * window.getDeltaTime());
         solarSystem.draw(&window, &shader);        
 
         window.swapBuffers();

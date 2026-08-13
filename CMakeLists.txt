@@ -8,6 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 find_package(OpenGL REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(GLEW REQUIRED)
+find_package(pugixml REQUIRED)
 
 add_executable(solar_system
     src/main.cpp
@@ -26,4 +27,5 @@ target_link_libraries(solar_system PRIVATE
     OpenGL::GL
     glfw
     GLEW::GLEW
+    pugixml
 )
